@@ -48,6 +48,7 @@ header h1 {
     text-transform: uppercase;
     letter-spacing: 0.125rem;
     word-spacing: 0.5rem;
+    cursor : pointer;
 }
 
     header h1:hover {
