@@ -11,10 +11,8 @@ function formatUnit(unit) {
 	return unit === 'C' ? '°C' : unit === 'F' ? '°F' : 'K';
 }
 function formatNumber(temperature) {
-	// Return integer
 	if (Number.isInteger(temperature)) return temperature;
-
-	// Return float
+	
 	const numberAsString = temperature + '';
 	const [integer, fraction] = numberAsString.split('.');
 	const fractionTo2DP = fraction.slice(0, 2);
@@ -38,21 +36,17 @@ function handleValidationError(error) {
 
 function handleFormSubmit(e) {
 	try {
-		// Prevent default form submission
+
 		e.preventDefault();
 
-		// Get data from the form
 		const entries = new FormData(converterForm).entries();
 		const data = Object.fromEntries(entries);
-
-		// Validate data
+		
 		if (!data.fromTemperature) throw new Error('Must provide a temperature');
 		if (data.fromUnit === data.toUnit) throw new Error(`Conversion units cannot be the same`);
 
-		// Convert temperatures
 		const answer = convertTemperature(data);
 
-		// Update UI
 		showAnswer(data, answer);
 	} catch (error) {
 		handleValidationError(error);
